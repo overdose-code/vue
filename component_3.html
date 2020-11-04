@@ -26,9 +26,8 @@
         <blog-post title="Blogging with Vue"></blog-post>
         <blog-post title="Why Vue is so fun"></blog-post>
 
-
         <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></blog-post>
-
+        
     </div>
 
 
@@ -37,6 +36,7 @@
 </html>
 <script type="text/javascript" src="./libs/Vue.min.js"></script>
 <script>
+    
     // component-1
     Vue.component('runoob', {
         template: '<h1>自定义组件</h1>'
