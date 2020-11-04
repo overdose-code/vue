@@ -1326,8 +1326,7 @@
       parentVal ?
         parentVal.concat(childVal) :
         Array.isArray(childVal) ?
-          childVal :
-          [childVal] :
+          childVal : [childVal] :
       parentVal;
     return res ?
       dedupeHooks(res) :
@@ -1506,8 +1505,7 @@
         val = props[key];
         name = camelize(key);
         res[name] = isPlainObject(val) ?
-          val :
-          {
+          val : {
             type: val
           };
       }
@@ -1542,8 +1540,7 @@
         normalized[key] = isPlainObject(val) ?
           extend({
             from: key
-          }, val) :
-          {
+          }, val) : {
             from: val
           };
       }
@@ -2460,8 +2457,7 @@
   // with hand-written render functions / JSX. In such cases a full normalization
   // is needed to cater to all possible types of children values.
   function normalizeChildren(children) {
-    return isPrimitive(children) ?
-      [createTextVNode(children)] :
+    return isPrimitive(children) ? [createTextVNode(children)] :
       Array.isArray(children) ?
         normalizeArrayChildren(children) :
         undefined
@@ -2697,8 +2693,7 @@
   function normalizeScopedSlot(normalSlots, key, fn) {
     var normalized = function () {
       var res = arguments.length ? fn.apply(null, arguments) : fn({});
-      res = res && typeof res === 'object' && !Array.isArray(res) ?
-        [res] // single vnode
+      res = res && typeof res === 'object' && !Array.isArray(res) ? [res] // single vnode
         :
         normalizeChildren(res);
       return res && (
@@ -3379,12 +3374,12 @@
     var vnode = new VNode(
       ("vue-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
       data, undefined, undefined, undefined, context, {
-        Ctor: Ctor,
-        propsData: propsData,
-        listeners: listeners,
-        tag: tag,
-        children: children
-      },
+      Ctor: Ctor,
+      propsData: propsData,
+      listeners: listeners,
+      tag: tag,
+      children: children
+    },
       asyncFactory
     );
 
@@ -5676,9 +5671,7 @@
   function mergeClassData(child, parent) {
     return {
       staticClass: concat(child.staticClass, parent.staticClass),
-      class: isDef(child.class) ?
-        [child.class, parent.class] :
-        parent.class
+      class: isDef(child.class) ? [child.class, parent.class] : parent.class
     }
   }
 
@@ -7161,8 +7154,7 @@
         return m[key];
       }).filter(function (_) {
         return _;
-      }) :
-      []
+      }) : []
   }
 
   function addProp(el, name, value, range, dynamic) {
@@ -7795,11 +7787,10 @@
     target$1.addEventListener(
       name,
       handler,
-      supportsPassive ?
-        {
-          capture: capture,
-          passive: passive
-        } :
+      supportsPassive ? {
+        capture: capture,
+        passive: passive
+      } :
         capture
     );
   }
@@ -8243,7 +8234,8 @@
     window.requestAnimationFrame ?
       window.requestAnimationFrame.bind(window) :
       setTimeout :
-    /* istanbul ignore next */ function (fn) {
+    /* istanbul ignore next */
+    function (fn) {
       return fn();
     };
 
@@ -9815,9 +9807,9 @@
           ) {
             options.warn(
               ("tag <" + (stack[i].tag) + "> has no matching end tag."), {
-                start: stack[i].start,
-                end: stack[i].end
-              }
+              start: stack[i].start,
+              end: stack[i].end
+            }
             );
           }
           if (options.end) {
@@ -9954,8 +9946,8 @@
             "Component template should contain exactly one root element. " +
             "If you are using v-if on multiple elements, " +
             "use v-else-if to chain them instead.", {
-              start: element.start
-            }
+            start: element.start
+          }
           );
         }
       }
@@ -10015,8 +10007,8 @@
         warnOnce(
           "Cannot use <" + (el.tag) + "> as component root element because it may " +
           'contain multiple nodes.', {
-            start: el.start
-          }
+          start: el.start
+        }
         );
       }
       if (el.attrsMap.hasOwnProperty('v-for')) {
@@ -10067,9 +10059,9 @@
               warn$2(
                 "Invalid dynamic argument expression: attribute names cannot contain " +
                 "spaces, quotes, <, >, / or =.", {
-                  start: attr.start + attr.name.indexOf("["),
-                  end: attr.start + attr.name.length
-                }
+                start: attr.start + attr.name.indexOf("["),
+                end: attr.start + attr.name.length
+              }
               );
             }
           });
@@ -10081,8 +10073,8 @@
             'Templates should only be responsible for mapping the state to the ' +
             'UI. Avoid placing tags with side-effects in your templates, such as ' +
             "<" + tag + ">" + ', as they will not be parsed.', {
-              start: element.start
-            }
+            start: element.start
+          }
           );
         }
 
@@ -10140,14 +10132,14 @@
             if (text === template) {
               warnOnce(
                 'Component template requires a root element, rather than just text.', {
-                  start: start
-                }
+                start: start
+              }
               );
             } else if ((text = text.trim())) {
               warnOnce(
                 ("text \"" + text + "\" outside root element will be ignored."), {
-                  start: start
-                }
+                start: start
+              }
               );
             }
           }
@@ -11556,8 +11548,8 @@
     if (el.children.length !== 1 || ast.type !== 1) {
       state.warn(
         'Inline-template components must have exactly one child element.', {
-          start: el.start
-        }
+        start: el.start
+      }
       );
     }
     if (ast && ast.type === 1) {
